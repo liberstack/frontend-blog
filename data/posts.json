@@ -1,55 +1,70 @@
 [
   {
     "slug": "001",
-    "title": "Introdução: A Ascensão do Web Developer Freelancer",
+    "title": "Fundamentos da Web",
     "date": "2026-06-24",
-    "excerpt": "O cenário profissional contemporâneo tem testemunhado uma transformação significativa, impulsionada pela digitalização e pela crescente demanda por presença online.",
+    "excerpt": "Antes de escrever uma linha de JavaScript, é importante entender o ambiente onde ele roda: o navegador. Como HTML, CSS e JS funcionam juntos, o que é o DOM e seu primeiro script.",
     "tag": [
-      "freelancer",
-      "developer"
+      "html",
+      "css",
+      "javascript"
     ],
+    "level": 1,
+    "emoji": "🌐",
     "file": "001.md"
   },
   {
     "slug": "002",
-    "title": "Introdução: A Porta de Entrada para o Mundo Digital",
+    "title": "JavaScript no Browser",
     "date": "2026-06-24",
-    "excerpt": "No vasto e complexo universo do desenvolvimento de software, o **Frontend** representa a linha de frente, a interface visível e interativa com a qual os usuários interagem.",
+    "excerpt": "Seletores, eventos e manipulação de DOM. Como usar querySelector, addEventListener e atualizar o conteúdo da página dinamicamente sem reload.",
     "tag": [
-      "frontend",
-      "developer"
+      "javascript",
+      "dom"
     ],
+    "level": 2,
+    "emoji": "🖱️",
     "file": "002.md"
   },
   {
     "slug": "003",
-    "title": "Introdução: A Jornada Contínua do Programador",
+    "title": "Dados e Comunicação",
     "date": "2026-06-24",
-    "excerpt": "No dinâmico e em constante evolução mundo da programação, a jornada de aprendizado é um ciclo contínuo de descoberta e aprimoramento.",
+    "excerpt": "Como buscar dados externos com fetch(), trabalhar com JSON e APIs públicas. Async/await na prática e tratamento de erros em requisições HTTP.",
     "tag": [
-      "developer"
+      "javascript",
+      "fetch",
+      "api"
     ],
+    "level": 3,
+    "emoji": "📡",
     "file": "003.md"
   },
   {
     "slug": "004",
-    "title": "A Origem da Programação Web",
+    "title": "Arquitetura de SPA",
     "date": "2026-06-24",
-    "excerpt": "A história da programação web começou oficialmente no início dos anos 1990, quando a internet começou a se tornar acessível fora de ambientes militares e acadêmicos.",
+    "excerpt": "Módulos ES6, hash router manual e separação de responsabilidades. Como construir uma Single Page Application sem framework, organizando o código em camadas.",
     "tag": [
-      "web",
-      "developer"
+      "javascript",
+      "spa",
+      "arquitetura"
     ],
+    "level": 4,
+    "emoji": "🏗️",
     "file": "004.md"
   },
   {
     "slug": "005",
-    "title": "Introdução: A Revolução da IA no Aprendizado de Código",
+    "title": "Deploy e Produto",
     "date": "2026-06-24",
-    "excerpt": "Aprender a programar, especialmente linguagens de marcação e estilo como HTML e CSS, pode ser um desafio para muitos.",
+    "excerpt": "GitHub Pages, domínio customizado, estrutura de projeto publicável e checklist antes do deploy. Como sair do localhost e colocar seu projeto acessível na web.",
     "tag": [
-      "AI"
+      "deploy",
+      "github"
     ],
+    "level": 5,
+    "emoji": "🚀",
     "file": "005.md"
   }
 ]

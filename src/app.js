@@ -48,12 +48,16 @@ async function renderPost(slug) {
       ? " · " + tags.map((t) => sanitize(t)).join(", ")
       : "";
 
+    const levelHtml = post.level
+      ? `<span class="level-badge level-${post.level}">level ${post.level}</span> `
+      : "";
+
     ui.setContent(`
       <a class="back-link" href="#/">← voltar</a>
       <article>
         <header class="article-header">
-          <h1>${sanitize(post.title)}</h1>
-          <p class="article-meta">${sanitize(post.date)}${tagHtml}</p>
+          <h1>${post.emoji ? post.emoji + " " : ""}${sanitize(post.title)}</h1>
+          <p class="article-meta">${levelHtml}${sanitize(post.date)}${tagHtml}</p>
         </header>
         <div class="article-body">${html}</div>
       </article>
@@ -111,15 +115,21 @@ function renderPostList(posts) {
               ? [post.tag]
               : [];
           const tagHtml = tags.length
-            ? " · " +
-              tags
+            ? tags
                 .map((t) => `<span class="post-tag">${sanitize(t)}</span>`)
                 .join(" ")
             : "";
+          const levelHtml = post.level
+            ? `<span class="level-badge level-${post.level}">level ${post.level}</span>`
+            : "";
+          const emoji = post.emoji ? `${post.emoji} ` : "";
           return `
           <li class="post-item">
-            <p class="post-date">${sanitize(post.date)}${tagHtml}</p>
-            <h2 class="post-title"><a href="#/p/${sanitize(post.slug)}">${sanitize(post.title)}</a></h2>
+            <p class="post-date">
+              ${levelHtml}
+              ${tagHtml}
+            </p>
+            <h2 class="post-title"><a href="#/p/${sanitize(post.slug)}">${emoji}${sanitize(post.title)}</a></h2>
             ${post.excerpt ? `<p class="post-excerpt">${sanitize(post.excerpt)}</p>` : ""}
           </li>
         `;
