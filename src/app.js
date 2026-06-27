@@ -2,6 +2,16 @@ import config from "../config/config.js";
 import router from "./router.js";
 import ui from "./ui.js";
 
+// ── SANITIZE ─────────────────────────────────────────────
+function sanitize(str) {
+  return String(str ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 // ── PÁGINAS ──────────────────────────────────────────────
 async function loadPage(name) {
   try {
@@ -34,14 +44,16 @@ async function renderPost(slug) {
       : post.tag
         ? [post.tag]
         : [];
-    const tagHtml = tags.length ? " · " + tags.join(", ") : "";
+    const tagHtml = tags.length
+      ? " · " + tags.map((t) => sanitize(t)).join(", ")
+      : "";
 
     ui.setContent(`
       <a class="back-link" href="#/">← voltar</a>
       <article>
         <header class="article-header">
-          <h1>${post.title}</h1>
-          <p class="article-meta">${post.date}${tagHtml}</p>
+          <h1>${sanitize(post.title)}</h1>
+          <p class="article-meta">${sanitize(post.date)}${tagHtml}</p>
         </header>
         <div class="article-body">${html}</div>
       </article>
@@ -100,13 +112,15 @@ function renderPostList(posts) {
               : [];
           const tagHtml = tags.length
             ? " · " +
-              tags.map((t) => `<span class="post-tag">${t}</span>`).join(" ")
+              tags
+                .map((t) => `<span class="post-tag">${sanitize(t)}</span>`)
+                .join(" ")
             : "";
           return `
           <li class="post-item">
-            <p class="post-date">${post.date}${tagHtml}</p>
-            <h2 class="post-title"><a href="#/p/${post.slug}">${post.title}</a></h2>
-            ${post.excerpt ? `<p class="post-excerpt">${post.excerpt}</p>` : ""}
+            <p class="post-date">${sanitize(post.date)}${tagHtml}</p>
+            <h2 class="post-title"><a href="#/p/${sanitize(post.slug)}">${sanitize(post.title)}</a></h2>
+            ${post.excerpt ? `<p class="post-excerpt">${sanitize(post.excerpt)}</p>` : ""}
           </li>
         `;
         })
